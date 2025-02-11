@@ -1,0 +1,119 @@
+script.lua:116: '<eof>' expected near 'end'
+script.lua:1: screen.clear([color]) takes 0 or 1 argument
+script.lua:5: screen.clear([color]) takes 0 or 1 argument
+script.lua:27: attempt to index global 'Controls' (a nil value)
+script.lua:27: attempt to index global 'Controls' (a nil value)
+script.lua:45: attempt to call global 'press' (a nil value)
+script.lua:45: attempt to call global 'press' (a nil value)
+script.lua:45: attempt to call global 'press' (a nil value)
+script.lua:45: attempt to call global 'press' (a nil value)
+script.lua:45: attempt to call global 'press' (a nil value)
+script.lua:45: attempt to call global 'press' (a nil value)
+script.lua:59: attempt to call global 'press' (a nil value)
+script.lua:29: no loop to break near ';'
+script.lua:29: attempt to call global 'press' (a nil value)
+script.lua:30: attempt to call global 'press' (a nil value)
+script.lua:30: attempt to call global 'pressed' (a table value)
+script.lua:32: no loop to break near 'end'
+script.lua:7: '=' expected near 'keys'
+script.lua:116: '=' expected near '<eof>'
+script.lua:5: attempt to index global 'lines' (a nil value)
+script.lua:5: attempt to index global 'lines' (a nil value)
+script.lua:5: attempt to index global 'lines' (a nil value)
+script.lua:156: bad argument #1 to 'clear' (Color expected, got nil)
+script.lua:94: '}' expected (to close '{' at line 92) near 'screen'
+script.lua:97: bad argument #1 to 'clear' (Color expected, got nil)
+script.lua:15: bad argument #4 to 'print' (string expected, got nil)
+script.lua:14: bad argument #5 to 'drawRect' (Color expected, got number)
+script.lua:42: intraFont.setStyle(font, size, color, angle, [align]) takes 4 or 5 arguments
+script.lua:42: bad argument #1 to 'setStyle' (intraFont expected, got nil)
+script.lua:42: bad argument #4 to 'setStyle' (number expected, got userdata)
+script.lua:42: bad argument #4 to 'setStyle' (number expected, got userdata)
+script.lua:42: bad argument #4 to 'setStyle' (number expected, got userdata)
+script.lua:42: bad argument #4 to 'setStyle' (number expected, got userdata)
+script.lua:51: attempt to call field 'waitVblankStart' (a nil value)
+script.lua:38: attempt to call field 'fillRect' (a nil value)
+script.lua:38: attempt to call field 'fillRect' (a nil value)
+script.lua:38: attempt to call field 'fillRect' (a nil value)
+script.lua:14: attempt to call global 'Color' (a table value)
+script.lua:14: attempt to call global 'Color' (a table value)
+script.lua:2: error loading 'ltn9.pgf'
+script.lua:40: attempt to call field 'Print' (a nil value)
+script.lua:40: attempt to call field 'Print' (a nil value)
+script.lua:40: SL.print(x, y, text) takes 3 arguments
+script.lua:40: attempt to call field 'print' (a nil value)
+script.lua:40: SL.print(x, y, text) takes 3 arguments
+script.lua:65: attempt to call global 'pressed' (a table value)
+script.lua:87: attempt to call global 'pressed' (a table value)
+script.lua:86: attempt to call global 'press' (a nil value)
+script.lua:66: bad argument #3 to 'print' (string expected, got nil)
+script.lua:66: bad argument #3 to 'print' (string expected, got nil)
+script.lua:66: attempt to perform arithmetic on global 'x' (a nil value)
+script.lua:139: attempt to call field 'delay' (a nil value)
+script.lua:139: attempt to call field 'delay' (a nil value)
+script.lua:77: intraFont.print(font, x, y, text) takes 4 arguments
+script.lua:66: malformed number near '1x0'
+script.lua:21: bad argument #4 to 'printColored' (string expected, got nil)
+script.lua:126: bad argument #2 to 'textW' (string expected, got nil)
+samples/image.lua:65: attempt to index global 'quiz' (a nil value)
+cannot open quiz.lua: No such file or directory
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+samples/image.lua:68: attempt to index global 'press' (a function value)
+samples/image.lua:68: attempt to index global 'press' (a function value)
+samples/color.lua:5: bad argument #1 to 'clear' (Color expected, got nil)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:32: bad argument #1 to '?' (Pad expected, got string)
+script.lua:25: bad argument #1 to '?' (Pad expected, got string)
+script.lua:1: module 'json_loader' not found:
+	no field package.preload['json_loader']
+	no file './json_loader.lua'
+	no file '/usr/local/share/lua/5.1/json_loader.lua'
+	no file '/usr/local/share/lua/5.1/json_loader/init.lua'
+	no file '/usr/local/lib/lua/5.1/json_loader.lua'
+	no file '/usr/local/lib/lua/5.1/json_loader/init.lua'
+	no file './json_loader.so'
+	no file '/usr/local/lib/lua/5.1/json_loader.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+./json_loader.lua:2: module 'json' not found:
+	no field package.preload['json']
+	no file './json.lua'
+	no file '/usr/local/share/lua/5.1/json.lua'
+	no file '/usr/local/share/lua/5.1/json/init.lua'
+	no file '/usr/local/lib/lua/5.1/json.lua'
+	no file '/usr/local/lib/lua/5.1/json/init.lua'
+	no file './json.so'
+	no file '/usr/local/lib/lua/5.1/json.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+./json_loader.lua:8: Не удалось открыть файл: tickets/ticket_1.json
+./json_loader.lua:8: Не удалось открыть файл: tickets/ticket_1.json
+samples/ticket.lua:81: '<eof>' expected near 'end'
+samples/ticket.lua:17: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:17: Image.load: file "" doesn't exist
+samples/ticket.lua:17: Image.load: file "011c87847a6e97caf914b64e369dcc10.jpg" doesn't exist
+samples/ticket.lua:32: intraFont.print(font, x, y, text) takes 4 arguments
+samples/ticket.lua:15: attempt to index local 'questionData' (a nil value)
+samples/ticket.lua:15: attempt to index local 'questionData' (a nil value)
+script.lua:6: Image.load: file "assets/LP.png" doesn't exist
+samples/ticket.lua:12: Image.load: file "assets/011c87847a6e97caf914b64e369dcc10.jpg" doesn't exist
+./json_loader.lua:8: Не удалось открыть файл: assets/ticket_2.json
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/A_B/e72bbb0a6d603fa37ff31ffd3bd2d515.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/A_B/1871b903ddd6b18d2bc45133234dd7fa.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/color.lua:9: bad argument #2 to 'textW' (string expected, got nil)
+samples/color.lua:9: bad argument #2 to 'textW' (string expected, got nil)
+cannot open ticket.lua: No such file or directory
+./json_loader.lua:6: Не удалось открыть файл: assets/tickets/ticket_12.json
+./json_loader.lua:6: Не удалось открыть файл: assets/tickets/ticket_17.json
+./json_loader.lua:6: Не удалось открыть файл: assets/tickets/ticket_38.json
