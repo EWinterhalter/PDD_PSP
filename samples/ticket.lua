@@ -5,61 +5,67 @@ local selectedAnswer = 1
 local isAnswerChecked = false 
 local ticketData = json_loader.getTicketData(selectedTicket)
 
+
+
+
 function drawQuestionScreen()
     local questionData = ticketData[currentQuestion]
    if questionData.image then
      local image = Image.load(questionData.image)
-       Image.draw(image,0,0)
+       Image.draw(image, 40,10)
     end
-    intraFont.print(deFfont, 10, 200, questionData.question)
+   print(10, 165, colors.black, questionData.question, 1, deFfont)
 
     for i, answer in ipairs(questionData.answers) do
-        local y = 100 + (i - 1) * 30
-        local color = black
+
+        local y = 185 + (i - 1) * 15
+        local colorQ = colors.black
         if i == selectedAnswer then
-            color = grey
+            colorQ = colors.grey
         end
 
         if isAnswerChecked then
             if answer.is_correct then
-                color = green
+                colorQ = colors.green
             elseif i == selectedAnswer and not answer.is_correct then
-                color = red
+                colorQ = colors.red
             end
         end
+        print(10, y, colorQ, answer.answer_text, 1, deFfont )
 
-        intraFont.print(deFfont, 10, y, answer.answer_text)
     end
-
     screen.flip()
 end
 
 while true do
     local pad = buttons.read()
     screen.clear(white)
-        if pressed["left"](pad) then
-            currentQuestion = currentQuestion - 1
-            if currentQuestion < 1 then currentQuestion = 20 end
+    if pressed["start"](pad) then
+        dofile("samples/image.lua") 
+    end
+    if  pressed["cross"](pad) and not isAnswerChecked then
+        isAnswerChecked = true
+    elseif pressed["right"](pad)and isAnswerChecked then
+        currentQuestion = currentQuestion + 1
+        if currentQuestion > #ticketData then
+            currentQuestion = 1 
+        end
+        selectedAnswer = 1
+        isAnswerChecked = false
+    elseif pressed["up"](pad) and not isAnswerChecked then
+        selectedAnswer = selectedAnswer - 1
+        if selectedAnswer < 1 then
+            selectedAnswer = #ticketData[currentQuestion].answers
+        end
+    elseif pressed["down"](pad) and not isAnswerChecked then
+        selectedAnswer = selectedAnswer + 1
+        if selectedAnswer > #ticketData[currentQuestion].answers then
             selectedAnswer = 1
-            isAnswerChecked = false
-        elseif pressed["right"](pad) then
-            currentQuestion = currentQuestion + 1
-            if currentQuestion > 20 then currentQuestion = 1 end
-            selectedAnswer = 1
-            isAnswerChecked = false
         end
-
-        if pressed["up"](pad) then
-            selectedAnswer = selectedAnswer - 1
-            if selectedAnswer < 1 then selectedAnswer = #ticketData[currentQuestion].answers end
-        elseif pressed["down"](pad) then
-            selectedAnswer = selectedAnswer + 1
-            if selectedAnswer > #ticketData[currentQuestion].answers then selectedAnswer = 1 end
-        end
-
-        if pressed["circle"](pad) and not isAnswerChecked then
-            isAnswerChecked = true
-        end
-
-        drawQuestionScreen()
+        
+    end
+ --   System.GC()
+  --  System.LowCPU()
+    drawQuestionScreen()
+    screen.flip()
 end

@@ -117,3 +117,27 @@ cannot open ticket.lua: No such file or directory
 ./json_loader.lua:6: Не удалось открыть файл: assets/tickets/ticket_12.json
 ./json_loader.lua:6: Не удалось открыть файл: assets/tickets/ticket_17.json
 ./json_loader.lua:6: Не удалось открыть файл: assets/tickets/ticket_38.json
+samples/ticket.lua:11: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:41: attempt to index local 'pad' (a userdata value)
+samples/ticket.lua:31: intraFont.print(font, x, y, text) takes 4 arguments
+samples/ticket.lua:63: 'end' expected (to close 'function' at line 36) near '<eof>'
+script.lua:23: bad argument #5 to 'printColored' (Color expected, got nil)
+script.lua:23: bad argument #5 to 'printColored' (Color expected, got nil)
+script.lua:23: bad argument #5 to 'printColored' (Color expected, got nil)
+script.lua:23: bad argument #5 to 'printColored' (Color expected, got nil)
+samples/ticket.lua:34: attempt to index global 'color' (a nil value)
+samples/ticket.lua:18: attempt to index global 'answer' (a nil value)
+script.lua:22: attempt to perform arithmetic on local 'y' (a nil value)
+samples/ticket.lua:17: attempt to index global 'color' (a nil value)
+samples/ticket.lua:17: attempt to index global 'color' (a nil value)
+samples/ticket.lua:21: malformed number near '100z'
+samples/ticket.lua:67: '<eof>' expected near 'end'
+script.lua:27: bad argument #1 to '?' (Pad expected, got string)
+samples/ticket.lua:14: Image.load: file "./images/no_image.jpg" doesn't exist
+samples/ticket.lua:44: attempt to perform arithmetic on global 'selectedY' (a nil value)
+./script.lua:27: bad argument #1 to '?' (Pad expected, got string)
+./script.lua:27: bad argument #1 to '?' (Pad expected, got string)
+script.lua:27: bad argument #1 to '?' (Pad expected, got string)
+script.lua:27: bad argument #1 to '?' (Pad expected, got string)
+samples/ticket.lua:43: attempt to index global 'press' (a function value)
+samples/ticket.lua:67: attempt to call field 'sleep' (a nil value)
