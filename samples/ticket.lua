@@ -5,19 +5,27 @@ local selectedAnswer = 1
 local isAnswerChecked = false 
 local ticketData = json_loader.getTicketData(selectedTicket)
 
+-- Таблица для хранения загруженных изображений
+local questionImages = {}
 
-
+-- Функция для загрузки изображения, если оно еще не загружено
+local function loadQuestionImage(questionData)
+    if questionData.image and not questionImages[currentQuestion] then
+        questionImages[currentQuestion] = Image.load(questionData.image)
+    end
+end
 
 function drawQuestionScreen()
     local questionData = ticketData[currentQuestion]
-   if questionData.image then
-     local image = Image.load(questionData.image)
-       Image.draw(image, 40,10)
+    
+    -- Отрисовка изображения, если оно есть
+    if questionImages[currentQuestion] then
+        Image.draw(questionImages[currentQuestion], 40, 10)
     end
-   print(10, 165, colors.black, questionData.question, 1, deFfont)
+    
+    print(10, 165, colors.black, questionData.question, 1, deFfont)
 
     for i, answer in ipairs(questionData.answers) do
-
         local y = 185 + (i - 1) * 15
         local colorQ = colors.black
         if i == selectedAnswer then
@@ -31,8 +39,7 @@ function drawQuestionScreen()
                 colorQ = colors.red
             end
         end
-        print(10, y, colorQ, answer.answer_text, 1, deFfont )
-
+        print(10, y, colorQ, answer.answer_text, 1, deFfont)
     end
     screen.flip()
 end
@@ -43,15 +50,18 @@ while true do
     if pressed["start"](pad) then
         dofile("samples/image.lua") 
     end
-    if  pressed["cross"](pad) and not isAnswerChecked then
+    if pressed["cross"](pad) and not isAnswerChecked then
         isAnswerChecked = true
-    elseif pressed["right"](pad)and isAnswerChecked then
+    elseif pressed["right"](pad) and isAnswerChecked then
         currentQuestion = currentQuestion + 1
         if currentQuestion > #ticketData then
             currentQuestion = 1 
         end
         selectedAnswer = 1
         isAnswerChecked = false
+        
+        -- Загрузка изображения для нового вопроса
+        loadQuestionImage(ticketData[currentQuestion])
     elseif pressed["up"](pad) and not isAnswerChecked then
         selectedAnswer = selectedAnswer - 1
         if selectedAnswer < 1 then
@@ -62,10 +72,8 @@ while true do
         if selectedAnswer > #ticketData[currentQuestion].answers then
             selectedAnswer = 1
         end
-        
     end
- --   System.GC()
-  --  System.LowCPU()
+    System.GC()
     drawQuestionScreen()
     screen.flip()
 end
