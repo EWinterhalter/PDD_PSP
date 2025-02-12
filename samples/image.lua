@@ -1,8 +1,3 @@
--- basic variables
-deFfont = intraFont.load('assets/regular.pgf')
-local bg = Image.load('assets/bg.png')
-
-pad, oldpad, currentfile, alpha = '', '', '', 0
 
 local white = Color.new(255, 255, 255)  
 local black = Color.new(0, 0, 0)      
@@ -53,32 +48,50 @@ end
 
 
 while true do
-    local pad = buttons.read() 
+	screen.clear(white) 
+	pad = buttons.read()
+	
+    print(0, 0, colors.black, "Выбор билета", 1, deFfont)
+
+
+  
+
+
+    pad = buttons.read() 
 
     counter = counter + 1
 
-	if pressed["circle"](pad) then
+	if press('circle') then
         selectedTicket = (selectedY - 1) * 10 + selectedX
         dofile("samples/ticket.lua")
     end
     if counter >= delay then
-        if pressed["up"](pad) then
+        if press('up') then
             selectedY = selectedY - 1
             if selectedY < 1 then selectedY = 4 end  
             counter = 0  
-        elseif pressed["down"](pad) then
+        elseif press('down') then
             selectedY = selectedY + 1
             if selectedY > 4 then selectedY = 1 end  
             counter = 0  
-        elseif pressed["left"](pad) then
+        elseif press('left') then
             selectedX = selectedX - 1
             if selectedX < 1 then selectedX = 10 end  
             counter = 0  
-        elseif pressed["right"](pad) then
+        elseif press('right') then
             selectedX = selectedX + 1
             if selectedX > 10 then selectedX = 1 end  
             counter = 0  
         end
     end
     drawTable() 
+
+
+	if press('start') then break; end
+	color = colors.black
+	oldpad = pad
+	screen.flip()
 end
+
+color = nil
+System.GC()

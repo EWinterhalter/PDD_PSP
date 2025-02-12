@@ -24,7 +24,7 @@ function drawQuestionScreen()
     end
     
     print(10, 165, colors.black, questionData.question, 1, deFfont)
-
+    print(0, 0, colors.black, currentQuestion, 1, deFfont)
     for i, answer in ipairs(questionData.answers) do
         local y = 185 + (i - 1) * 15
         local colorQ = colors.black
@@ -43,15 +43,32 @@ function drawQuestionScreen()
     end
     screen.flip()
 end
-
+local delay = 10  
+local counter = 0 
+points = 0
 while true do
     local pad = buttons.read()
     screen.clear(white)
+    counter = counter + 1
+    if currentQuestion == 1 then
+        loadQuestionImage(ticketData[currentQuestion])
+    end
+    if currentQuestion == 20 then
+        if pressed["right"](pad) then
+            dofile("samples/final.lua")
+          --  screen.flip()
+        end
+    end
     if pressed["start"](pad) then
-        dofile("samples/image.lua") 
+        break -- Выход из цикла
     end
     if pressed["cross"](pad) and not isAnswerChecked then
         isAnswerChecked = true
+        local selectedAnswerData = ticketData[currentQuestion].answers[selectedAnswer]
+        if selectedAnswerData.is_correct then
+            points = points + 1
+            -- Увеличиваем счетчик очков за правильный ответ
+        end
     elseif pressed["right"](pad) and isAnswerChecked then
         currentQuestion = currentQuestion + 1
         if currentQuestion > #ticketData then
@@ -59,20 +76,22 @@ while true do
         end
         selectedAnswer = 1
         isAnswerChecked = false
-        
         -- Загрузка изображения для нового вопроса
         loadQuestionImage(ticketData[currentQuestion])
-    elseif pressed["up"](pad) and not isAnswerChecked then
+    elseif pressed["up"](pad) and not isAnswerChecked  and counter >= delay then
         selectedAnswer = selectedAnswer - 1
         if selectedAnswer < 1 then
             selectedAnswer = #ticketData[currentQuestion].answers
         end
-    elseif pressed["down"](pad) and not isAnswerChecked then
+        counter = 0
+    elseif pressed["down"](pad) and not isAnswerChecked and counter >= delay then
         selectedAnswer = selectedAnswer + 1
         if selectedAnswer > #ticketData[currentQuestion].answers then
             selectedAnswer = 1
         end
+        counter = 0
     end
+
     System.GC()
     drawQuestionScreen()
     screen.flip()
