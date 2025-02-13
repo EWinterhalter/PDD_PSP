@@ -5,12 +5,9 @@ local selectedAnswer = 1
 local isAnswerChecked = false 
 local ticketData = json_loader.getTicketData(selectedTicket)
 local limit = 470 
-
-
--- Таблица для хранения загруженных изображений
 local questionImages = {}
 
--- Функция для загрузки изображения, если оно еще не загружено
+
 local function loadQuestionImage(questionData)
     if questionData.image and not questionImages[currentQuestion] then
         questionImages[currentQuestion] = Image.load(questionData.image)
@@ -25,7 +22,7 @@ function drawQuestionScreen()
     
 
     print(0, 0, colors.black, currentQuestion, 1, deFfont)
-    -- Отрисовка изображения, если оно есть
+
     if questionImages[currentQuestion] then
         if questionData.image == "./images/no_image.jpg" then
             print(130, 50, colors.black, "Вопрос без изображения", 1, deFfont)
@@ -37,29 +34,29 @@ function drawQuestionScreen()
         
     end
     for i = 1, #questionData.question do
-        local char = questionData.question:sub(i, i)  -- Получаем текущий символ
-        local nextCurstr = curstr .. char  -- Временная строка для проверки длины
-        local nextCurlength = intraFont.textW(deFfont, nextCurstr)  -- Длина временной строки
+        local char = questionData.question:sub(i, i)  
+        local nextCurstr = curstr .. char  
+        local nextCurlength = intraFont.textW(deFfont, nextCurstr)  
     
-        -- Если добавление символа превышает лимит, выводим текущую строку и начинаем новую
+        
         if nextCurlength > limit then
-            print(textlength, textheight, colors.black, curstr, 0.9, deFfont)  -- Выводим текущую строку
-            textheight = textheight + 10  -- Переход на новую строку
+            print(textlength, textheight, colors.black, curstr, 0.9, deFfont)  
+            textheight = textheight + 10  
             curlength = 0
-            curstr = char  -- Начинаем новую строку с текущего символа
+            curstr = char  
         else
-            curstr = nextCurstr  -- Добавляем символ к текущей строке
-            curlength = nextCurlength  -- Обновляем длину текущей строки
+            curstr = nextCurstr  
+            curlength = nextCurlength  
         end
     end
     
-    -- После цикла выводим оставшуюся строку, если она есть
+
     if curstr ~= "" then
         print(textlength, textheight, colors.black, curstr, 0.9, deFfont)
         curstr = ""
     end
+    y_answ = textheight + 15
     for i, answer in ipairs(questionData.answers) do
-        y_answ = textheight + 15 + (i - 1) * 12
         colorQ_answ = colors.black
         if i == selectedAnswer then
             colorQ_answ = colors.grey
@@ -74,27 +71,26 @@ function drawQuestionScreen()
         end
 
         for i = 1, #answer.answer_text do
-            local char = answer.answer_text:sub(i, i)  -- Получаем текущий символ
-            local nextCurstr = curstr .. char  -- Временная строка для проверки длины
-            local nextCurlength = intraFont.textW(deFfont, nextCurstr)  -- Длина временной строки
-
+            local char = answer.answer_text:sub(i, i)  
+            local nextCurstr = curstr .. char  
+            local nextCurlength = intraFont.textW(deFfont, nextCurstr)  
             if nextCurlength > limit then
-                print(textlength, y_answ + 10, colorQ_answ, curstr, 0.8, deFfont)  -- Выводим текущую строку
-                y_answ = y_answ + 10  -- Переход на новую строку
+                print(textlength, y_answ + 10, colorQ_answ, curstr, 0.85, deFfont)  
+                y_answ = y_answ + 10 
                 curlength = 0
-                curstr = char  -- Начинаем новую строку с текущего символа
+                curstr = char  
             else
-                curstr = nextCurstr  -- Добавляем символ к текущей строке
-                curlength = nextCurlength  -- Обновляем длину текущей строки
+                curstr = nextCurstr  
+                curlength = nextCurlength  
             end
         end
         
-        -- После цикла выводим оставшуюся строку, если она есть
+       
         if curstr ~= "" then
-            print(textlength, y_answ + 10, colorQ_answ, curstr, 0.8, deFfont)
+            print(textlength, y_answ + 10, colorQ_answ, curstr, 0.85, deFfont)
+            y_answ = y_answ + 10
             curstr = ""
         end
-        -- print(10, y, colorQ, answer.answer_text, 1, deFfont)
     end
 end
 local delay = 10  
@@ -114,14 +110,14 @@ while true do
         end
     end
     if pressed["start"](pad) then
-        dofile("./script.lua")
+        break 
     end
     if pressed["cross"](pad) and not isAnswerChecked then
         isAnswerChecked = true
         local selectedAnswerData = ticketData[currentQuestion].answers[selectedAnswer]
         if selectedAnswerData.is_correct then
             points = points + 1
-            -- Увеличиваем счетчик очков за правильный ответ
+
         end
     elseif pressed["right"](pad) and isAnswerChecked then
         currentQuestion = currentQuestion + 1
@@ -130,7 +126,7 @@ while true do
         end
         selectedAnswer = 1
         isAnswerChecked = false
-        -- Загрузка изображения для нового вопроса
+
         loadQuestionImage(ticketData[currentQuestion])
     elseif pressed["up"](pad) and not isAnswerChecked  and counter >= delay then
         selectedAnswer = selectedAnswer - 1
