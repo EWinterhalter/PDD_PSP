@@ -41,7 +41,6 @@ function drawQuestionScreen()
         end
         print(10, y, colorQ, answer.answer_text, 1, deFfont)
     end
-    screen.flip()
 end
 local delay = 10  
 local counter = 0 
@@ -91,8 +90,6 @@ while true do
         end
         counter = 0
     end
-
-    System.GC()
     drawQuestionScreen()
     screen.flip()
 end

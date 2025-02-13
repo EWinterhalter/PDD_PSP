@@ -176,3 +176,4 @@ script.lua:23: bad argument #4 to 'printColored' (string expected, got nil)
 samples/quiz.lua:17: sound.play: error to load 'assets/bg.mp3'
 samples/image.lua:37: attempt to perform arithmetic on global 'counter' (a nil value)
 ./script.lua:27: bad argument #1 to '?' (Pad expected, got string)
+cannot open : No such file or directory

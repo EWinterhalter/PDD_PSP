@@ -42,8 +42,6 @@ function drawTable()
 
         intraFont.print(deFfont, x + squareSize / 2, y + squareSize / 2 - 10, numbers[i])
     end
-
-    screen.flip() 
 end
 
 
