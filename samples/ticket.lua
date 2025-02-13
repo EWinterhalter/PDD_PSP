@@ -5,6 +5,12 @@ local selectedAnswer = 1
 local isAnswerChecked = false 
 local ticketData = json_loader.getTicketData(selectedTicket)
 
+limit = 470
+textheight, textlength = 165, 10
+curstr = "" 
+curlength = 0 
+
+
 -- Таблица для хранения загруженных изображений
 local questionImages = {}
 
@@ -22,7 +28,27 @@ function drawQuestionScreen()
     if questionImages[currentQuestion] then
         Image.draw(questionImages[currentQuestion], 40, 10)
     end
+    -- for i = 1, #questionData.question do
+    --     local char = questionData.question:sub(i, i)  -- Получаем текущий символ
+    --     local nextCurstr = curstr .. char  -- Временная строка для проверки длины
+    --     local nextCurlength = intraFont.textW(deFfont, nextCurstr)  -- Длина временной строки
     
+    --     -- Если добавление символа превышает лимит, выводим текущую строку и начинаем новую
+    --     if nextCurlength > limit then
+    --         print(textlength, textheight, colors.black, curstr, 1, deFfont)  -- Выводим текущую строку
+    --         textheight = textheight + 10  -- Переход на новую строку
+    --         curlength = 0
+    --         curstr = char  -- Начинаем новую строку с текущего символа
+    --     else
+    --         curstr = nextCurstr  -- Добавляем символ к текущей строке
+    --         curlength = nextCurlength  -- Обновляем длину текущей строки
+    --     end
+    -- end
+    
+    -- -- После цикла выводим оставшуюся строку, если она есть
+    -- if curstr ~= "" then
+    --     print(textlength, textheight, colors.black, curstr, 1, deFfont)
+    -- end
     print(10, 165, colors.black, questionData.question, 1, deFfont)
     print(0, 0, colors.black, currentQuestion, 1, deFfont)
     for i, answer in ipairs(questionData.answers) do
