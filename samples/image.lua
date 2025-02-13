@@ -59,7 +59,7 @@ while true do
 
     counter = counter + 1
 
-	if press('circle') then
+	if press('cross') then
         selectedTicket = (selectedY - 1) * 10 + selectedX
         dofile("samples/ticket.lua")
     end
