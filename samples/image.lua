@@ -47,16 +47,12 @@ end
 
 while true do
 	screen.clear(white) 
+
 	pad = buttons.read()
 	
     print(0, 0, colors.black, "Выбор билета", 1, deFfont)
 
-
-  
-
-
     pad = buttons.read() 
-
     counter = counter + 1
 
 	if press('cross') then
@@ -86,8 +82,10 @@ while true do
 
 
 	if press('start') then break; end
+    
 	color = colors.black
 	oldpad = pad
+
 	screen.flip()
 end
 

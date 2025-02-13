@@ -51,13 +51,13 @@ colors = {
 }
 
 
-
+selectedTicket = LUA.getRandom(40)
 local menu = {
 	num = 1,
 	time = '',
-	
+
 	Russian = {
-		{name = 'Случайный билет', file = 'samples/quiz.lua', desc = 'Тестирование случайным\nбилетом'},
+		{name = 'Случайный билет', file = 'samples/ticket.lua', desc = 'Тестирование случайным\nбилетом'},
 		{name = 'Выбрать билет', file = 'samples/image.lua', desc = 'Возможность выбрать билет \nиз списка'},
 		
 	},
