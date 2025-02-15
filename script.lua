@@ -46,7 +46,7 @@ colors = {
 	green = Color.new(107,157,118),
 	blue = Color.new(76, 102, 240),
 	pink = Color.new(255, 0, 127),
-	grey = Color.new(200,200,200),
+	grey = Color.new(120,120,120),
 	red = Color.new(120, 0, 24)
 }
 
